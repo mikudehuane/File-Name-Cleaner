@@ -1,6 +1,7 @@
 import re
 import os
 import os.path as osp
+import argparse
 
 
 def rename(fd, template):
@@ -17,5 +18,12 @@ def rename(fd, template):
 
 
 if __name__ == '__main__':
-    template = re.compile(r'Shingeki no Kyojin - ([0-9]+) \[BDRip 1280x720\]-muxed\.(mp4)')
+    parser = argparse.ArgumentParser('rename files in directory')
+    parser.add_argument(
+        '-tmp', '--template', type = str, 
+        help = 'file name template, in regex format, () appears first in number, second in extension, '
+               'e.g., Shingeki no Kyojin - ([0-9]+) \[BDRip 1280x720\]-muxed\.(mp4)')
+    args = parser.parse_args()
+    print(f'renaming with template: {args.template}')
+    template = re.compile(args.template)
     rename('.', template)
