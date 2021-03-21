@@ -15,7 +15,7 @@ move rename.py to the directory and enter
 ```bash
 python rename.py -tmp="[Drag] Dev Cry [720p] [Multi-Audio] num5 [Multi-Subs]"
 ``` 
-Then, also files matching such a template are automatically renamed.
+Then, all files matching such a template are automatically renamed.
 
 ### Before Renaming
 ![before renaming](figures/before.png)
