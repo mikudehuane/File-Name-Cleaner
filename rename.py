@@ -72,7 +72,9 @@ def analyze_patterns(fd):
             for diff_idx, count in diff_idxs.items():
                 target_pat = deepcopy(fn_pat)
                 target_pat[diff_idx] = r'(\d+)'
-                ret_pats[''.join(target_pat)] = count
+                target_pat.append('$')  # to match all
+                pat = ''.join(target_pat)
+                ret_pats[pat] = count
     return ret_pats
                     
 
