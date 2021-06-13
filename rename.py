@@ -50,6 +50,9 @@ def analyze_patterns(fd):
                         del matched_fns[key]
                         break
         
+        # remove those in fn_key2diffs but not in matched_fns
+        fn_key2diffs = {key: val for key, val in fn_key2diffs.items() if key in matched_fns}
+        
         # since we have filtered length one pats, all pats have digits, and keys in fn_key2diffs matches those in matched_fns
         fn_key2diffs = {key: val for key, val in fn_key2diffs.items() if len(val) == 1}  # remove matches that has more than one diff in digits
         diff_idxs = dict()  # idx in fn_pat -> number of matches
